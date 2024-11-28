@@ -23,7 +23,7 @@ const Profile = () => {
         }
 
         const response = await axios.get(
-          "http://127.0.0.1:5000/api/v1/user/me",
+          "https://jobify-web-api.onrender.com/api/v1/user/me",
           {
             headers: {
               Authorization: `Bearer ${token}`,

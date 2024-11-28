@@ -27,7 +27,7 @@ const JobListingPage = () => {
   const fetchJobs = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://127.0.0.1:5000/api/v1/jobs", {
+      const response = await axios.get("https://jobify-web-api.onrender.com/api/v1/jobs", {
         params: {
           jobTitle,
           location: locationFilter,

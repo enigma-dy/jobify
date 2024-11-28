@@ -11,7 +11,7 @@ export default function JobCategory() {
   const fectchData = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:5000/api/v1/jobs/categories"
+        "https://jobify-web-api.onrender.com/api/v1/jobs/categories"
       );
       setData(response.data.categories);
       setLoading(false);

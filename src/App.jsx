@@ -13,7 +13,7 @@ const LatestJob = React.lazy(() => import("./uicomponents/Latestjob.jsx"));
 function App() {
   return (
     <>
-      <div className="bg-[url('http://127.0.0.1:5000/images/background.png')] bg-cover bg-center w-full h-screen">
+      <div className="bg-[url('https://jobify-web-api.onrender.com/images/background.png')] bg-cover bg-center w-full h-screen">
         <div className="absolute top-[15%] md:top-[5%] ">
           <LargeBanner />
         </div>

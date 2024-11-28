@@ -16,7 +16,7 @@ export default function LogoSwipper() {
   const fetchSponsors = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:5000/api/v1/sponsors/sponsors"
+        "https://jobify-web-api.onrender.com/api/v1/sponsors/sponsors"
       );
 
       setData(response.data.sponsors);
@@ -61,7 +61,7 @@ export default function LogoSwipper() {
             key={sponsor._id}
             className="flex items-center w-full h-full p-10">
             <img
-              src={`http://127.0.0.1:5000/${sponsor.logo}`}
+              src={`https://jobify-web-api.onrender.com/${sponsor.logo}`}
               alt={sponsor.name}
               className="object-scale-down w-32 h-32"
             />

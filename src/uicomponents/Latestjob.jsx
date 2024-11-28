@@ -8,7 +8,7 @@ export default function LatestJob() {
 
   const fetchLatestJob = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:5000/api/v1/jobs");
+      const response = await axios.get("https://jobify-web-api.onrender.com/api/v1/jobs");
       setData(response.data.jobs);
       setLoading(false);
       console.log(data);

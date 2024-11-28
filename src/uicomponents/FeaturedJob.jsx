@@ -10,7 +10,7 @@ export default function FeaturedJob() {
   const fetchFeaturedJob = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:5000/api/v1/jobs/featured"
+        "https://jobify-web-api.onrender.com/api/v1/jobs/featured"
       );
       setData(response.data.featured);
       setLoading(false);
