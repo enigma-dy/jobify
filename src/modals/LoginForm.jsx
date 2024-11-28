@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-
 import { Login } from "../auth/Login";
+import { TbPasswordUser } from "react-icons/tb";
+import { TiUser } from "react-icons/ti";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
+import { MdArrowRightAlt } from "react-icons/md";
 
 const LoginFormComponent = ({ setUser, onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,11 +41,7 @@ const LoginFormComponent = ({ setUser, onClose }) => {
           )}
           <div className="flex items-center space-x-2">
             <label htmlFor="email" className="p-4 bg-gray-600 rounded-l">
-              <svg
-                className="w-6 h-6 fill-current"
-                xmlns="http://www.w3.org/2000/svg">
-                <use xlinkHref="#icon-user" />
-              </svg>
+              <TiUser />
             </label>
             <input
               id="email"
@@ -56,22 +56,24 @@ const LoginFormComponent = ({ setUser, onClose }) => {
           </div>
           <div className="flex items-center space-x-2">
             <label htmlFor="password" className="p-4 bg-gray-600 rounded-l">
-              <svg
-                className="w-6 h-6 fill-current"
-                xmlns="http://www.w3.org/2000/svg">
-                <use xlinkHref="#icon-lock" />
-              </svg>
+              <TbPasswordUser />
             </label>
             <input
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 bg-gray-600 rounded-r outline-none focus:bg-gray-700"
+              className="w-full px-4 py-3 bg-gray-600 text-white rounded-r outline-none focus:bg-gray-700"
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="p-2 text-gray-400 hover:text-gray-200">
+              {showPassword ? <BsEye /> : <BsEyeSlash />}
+            </button>
           </div>
           <button
             type="submit"
@@ -84,9 +86,7 @@ const LoginFormComponent = ({ setUser, onClose }) => {
           <a href="#" className="text-pink-600 hover:underline">
             Sign up now
           </a>
-          <svg className="inline w-4 h-4 fill-current">
-            <use xlinkHref="#icon-arrow-right" />
-          </svg>
+          <MdArrowRightAlt />
         </p>
       </div>
     </div>
