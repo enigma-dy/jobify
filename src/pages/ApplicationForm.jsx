@@ -43,45 +43,46 @@ const ApplicationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-6 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Apply for Job</h2>
-      {error && <div className="text-red-500 mb-4">{error}</div>}
-      {success && <div className="text-green-500 mb-4">{success}</div>}
+    <div className="max-w-md mx-auto p-6 bg-white rounded shadow-md mt-40">
+  <h2 className="text-3xl font-bold mb-4">Apply for Job</h2>
+  {error && <div className="text-red-500 mb-4">{error}</div>}
+  {success && <div className="text-green-500 mb-4">{success}</div>}
 
-      <div className="mb-4">
-        <label className="block text-gray-700 mb-2" htmlFor="cover_letter">
-          Cover Letter (optional):
-        </label>
-        <textarea
-          id="cover_letter"
-          name="cover_letter"
-          value={coverLetter}
-          onChange={(e) => setCoverLetter(e.target.value)}
-          className="border border-gray-300 rounded w-full p-2"
-        />
-      </div>
+  <div className="mb-4">
+    <label className="block text-gray-700 mb-2" htmlFor="cover_letter">
+      Cover Letter (optional):
+    </label>
+    <textarea
+      id="cover_letter"
+      name="cover_letter"
+      value={coverLetter}
+      onChange={(e) => setCoverLetter(e.target.value)}
+      className="border border-gray-300 rounded w-full p-2 h-32"
+    />
+  </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700 mb-2" htmlFor="resume">
-          Resume (required):
-        </label>
-        <input
-          type="file"
-          id="resume"
-          name="resume"
-          accept=".pdf, .doc, .docx"
-          onChange={handleFileChange}
-          className="border border-gray-300 rounded w-full p-2"
-          required
-        />
-      </div>
+  <div className="mb-4">
+    <label className="block text-gray-700 mb-2" htmlFor="resume">
+      Resume (required):
+    </label>
+    <input
+      type="file"
+      id="resume"
+      name="resume"
+      accept=".pdf,.doc,.docx"
+      onChange={handleFileChange}
+      className="border border-gray-300 rounded w-full p-2"
+      required
+    />
+  </div>
 
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded">
-        Submit Application
-      </button>
-    </form>
+  <button
+    type="submit"
+    className="bg-blue-500 text-white px-4 py-2 rounded w-full mt-4"
+  >
+    Submit Application
+  </button>
+</div>
   );
 };
 

@@ -62,10 +62,10 @@ function MobileNavComponent() {
                 <li key={nav.name} className="w-full text-left group">
                   <Link
                     to={nav.path}
-                    className="relative text-xl text-gray-800 font-medium transition-all duration-300 ease-in-out
-          group-hover:bg-blue-100 px-2 py-1 rounded-lg group-hover:shadow-lg group-hover:scale-105"
+                    className="relative  text-xl text-gray-800 font-medium transition-all duration-300 ease-in-out
+           px-2 py-1 rounded-lg  group-hover:scale-105"
                     onClick={() => setIsMenuOpen(false)}>
-                    <span className="relative z-10">
+                    <span className="relative z-10 w-full ">
                       {capitalizeWords(nav.name)}
                     </span>
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600 transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -78,12 +78,12 @@ function MobileNavComponent() {
               {user ? null : (
                 <div className="space-y-4">
                   <button
-                    className="bg-blue-600 text-white text-lg font-semibold py-2 px-6 rounded transition duration-300"
+                    className="bg-blue-600 text-white text-lg font-semibold py-2 px-6 transition duration-300"
                     onClick={() => navigate("/login")}>
                     Log in
                   </button>
                   <button
-                    className="text-blue-600 border border-blue-600 text-lg font-semibold py-2 px-6 rounded transition duration-300"
+                    className="text-blue-600 border border-blue-600 text-lg font-semibold py-2 px-6  transition duration-300"
                     onClick={() => {
                       navigate("/signup");
                       setIsMenuOpen(false);

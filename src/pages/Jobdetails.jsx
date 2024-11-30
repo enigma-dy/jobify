@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -27,97 +29,97 @@ const JobDetails = () => {
   }, [id]);
 
   if (loading)
-    return <div className="text-center text-lg mt-10">Loading...</div>;
+    return <div className="absolute inset-0 flex justify-center items-center">
+  <Skeleton count={5} />
+</div>
   if (error)
-    return <div className="text-center text-red-600 mt-10">{error}</div>;
+    return  <div className="text-center text-red-600 mt-10">{error}</div>;
 
   return (
-    <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg mt-10 space-y-6">
+    <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg  mt-40">
+  <div className="flex flex-col space-y-6">
+    <div className="flex justify-between">
       <h1 className="text-4xl font-bold text-gray-800">{job.title}</h1>
+      <button
+        onClick={() => navigate("apply")}
+        className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600"
+      >
+        Apply Now
+      </button>
+    </div>
+
+    <div className="flex flex-col space-y-2">
       <p className="text-lg text-gray-600">{job.description}</p>
-
-      <div className="border-t border-gray-300 py-4 space-y-4">
-        <div>
-          <h2 className="text-xl font-semibold text-gray-700">
-            Company Information
-          </h2>
-          <p className="text-gray-600">{job.company.name}</p>
-          <p className="text-gray-500">{job.company.location}</p>
-          <a
-            href={job.company.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:underline">
-            Visit Company Site
-          </a>
+      <div className="flex flex-wrap justify-between">
+        <div className="flex-1">
+          <h2 className="text-xl font-semibold text-gray-700">Company Information</h2>
+          <ul className="list-none text-gray-600">
+            <li>Company: {job.company.name}</li>
+            <li>Location: {job.company.location}</li>
+            <li>
+              Website:{" "}
+              <a
+                href={job.company.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                Visit Company Site
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <div>
+        <div className="flex-1">
           <h2 className="text-xl font-semibold text-gray-700">Job Details</h2>
-          <p className="text-gray-600">
-            <span className="font-semibold">Category:</span> {job.category}
-          </p>
-          <p className="text-gray-600">
-            <span className="font-semibold">Type:</span> {job.jobType}
-          </p>
-          <p className="text-gray-600">
-            <span className="font-semibold">Salary:</span> $
-            {job.salary.toLocaleString()}
-          </p>
-          <p className="text-gray-600">
-            <span className="font-semibold">Remote:</span>{" "}
-            {job.remote ? "Yes" : "No"}
-          </p>
-          <p className="text-gray-600">
-            <span className="font-semibold">Featured:</span>{" "}
-            {job.featured ? "Yes" : "No"}
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-gray-700">Requirements</h2>
-          <ul className="list-disc list-inside text-gray-600">
-            {job.requirement.map((req, index) => (
-              <li key={index}>{req}</li>
-            ))}
+          <ul className="list-none text-gray-600">
+            <li>Category: {job.category}</li>
+            <li>Type: {job.jobType}</li>
+            <li>Salary: ${job.salary.toLocaleString()}</li>
+            <li>Remote: {job.remote? "Yes" : "No"}</li>
+            <li>Featured: {job.featured? "Yes" : "No"}</li>
           </ul>
         </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-gray-700">Benefits</h2>
-          <ul className="list-disc list-inside text-gray-600">
-            {job.benefits.length > 0 ? (
-              job.benefits.map((benefit, index) => (
-                <li key={index}>{benefit}</li>
-              ))
-            ) : (
-              <li>No specific benefits mentioned</li>
-            )}
-          </ul>
-        </div>
-
-        <div className="text-gray-600 text-sm">
-          <p>
-            <span className="font-semibold">Posted on:</span>{" "}
-            {new Date(job.datePosted).toLocaleDateString()}
-          </p>
-          <p>
-            <span className="font-semibold">Application Deadline:</span>{" "}
-            {job.applicationDeadline
-              ? new Date(job.applicationDeadline).toLocaleDateString()
-              : "N/A"}
-          </p>
-        </div>
-      </div>
-
-      <div className="flex justify-end">
-        <button
-          onClick={() => navigate("apply")}
-          className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">
-          Apply Now
-        </button>
       </div>
     </div>
+
+    <div className="flex flex-col space-y-6">
+      <h2 className="text-xl font-semibold text-gray-700">Requirements</h2>
+      <ul className="list-disc list-inside text-gray-600">
+        {job.requirement.map((req, index) => (
+          <li key={index}>{req}</li>
+        ))}
+      </ul>
+
+      <h2 className="text-xl font-semibold text-gray-700">Benefits</h2>
+      {job.benefits.length > 0? (
+        <ul className="list-disc list-inside text-gray-600">
+          {job.benefits.map((benefit, index) => (
+            <li key={index}>{benefit}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-gray-600">No specific benefits</p>
+      )}
+    </div>
+
+    <div className="flex flex-col space-y-2">
+      <h2 className="text-xl font-semibold text-gray-700">Timeline</h2>
+      <ul className="list-none text-gray-600">
+        <li>
+          Posted on:{" "}
+          {new Date(job.postedOn).toLocaleDateString()}
+        </li>
+        <li>
+          Application Deadline:{" "}
+          {job.applicationDeadline
+          ? new Date(job.applicationDeadline).toLocaleDateString()
+            : "N/A"}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
   );
 };
 

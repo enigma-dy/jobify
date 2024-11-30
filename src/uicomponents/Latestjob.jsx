@@ -22,8 +22,7 @@ export default function LatestJob() {
     fetchLatestJob();
   }, []);
 
-  if (loading) return <div>Loading</div>;
-  if (error) return <div>Error</div>;
+  if (loading || !data.length) return null;
 
   return (
     <div className="p-6 bg-gray-100">
