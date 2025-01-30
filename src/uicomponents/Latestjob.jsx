@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function LatestJob() {
@@ -8,10 +9,11 @@ export default function LatestJob() {
 
   const fetchLatestJob = async () => {
     try {
-      const response = await axios.get("https://jobify-web-api.onrender.com/api/v1/jobs");
+      const response = await axios.get(
+        "https://jobify-web-api.onrender.com/api/v1/jobs"
+      );
       setData(response.data.jobs);
       setLoading(false);
-      console.log(data);
     } catch (error) {
       setError(error);
       setLoading(false);
@@ -36,33 +38,30 @@ export default function LatestJob() {
         </button>
       </div>
 
-      <ul className="flex flex-wrap gap-6 justify-center items-start">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center items-start">
         {data.length > 0 ? (
-          data.slice(0, 12).map((job) => (
-            <li
-              key={job._id}
-              className="w-full max-w-md p-6 bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300">
-              <p className="font-semibold text-xl mb-2">{job.title}</p>
-
-              <p className="text-gray-500 mb-1">{job.location}</p>
-
-              <p className="flex gap-2 items-center text-gray-600 mb-4">
-                <span>{job.company.name}</span>
-                <span className="font-bold text-gray-400">·</span>
-                <span>{job.company.location}</span>
-              </p>
-
-              <div className="flex items-center space-x-3">
-                <p className="text-sm font-medium">{job.jobType}</p>
-                <span className="w-1 h-6 bg-gray-300"></span>
-                <p className="text-sm font-medium">{job.category}</p>
-              </div>
+          data.slice(0, 14).map((job) => (
+            <li key={job._id}>
+              <Link to={`/jobs/${job._id}`}>
+                <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300">
+                  <p className="font-semibold text-xl mb-2">{job.title}</p>
+                  <p className="text-gray-500 mb-1">{job.location}</p>
+                  <p className="flex gap-2 items-center text-gray-600 mb-4">
+                    <span>{job.company.name}</span>
+                    <span className="font-bold text-gray-400">·</span>
+                    <span>{job.company.location}</span>
+                  </p>
+                  <div className="flex items-center space-x-3">
+                    <p className="text-sm font-medium">{job.jobType}</p>
+                    <span className="w-1 h-6 bg-gray-300"></span>
+                    <p className="text-sm font-medium">{job.category}</p>
+                  </div>
+                </div>
+              </Link>
             </li>
           ))
         ) : (
-          <p className="text-center text-gray-500">
-            No featured jobs available
-          </p>
+          <p className="text-center text-gray-500">No jobs available</p>
         )}
       </ul>
     </div>

@@ -26,20 +26,15 @@ export default function JobCategory() {
     fetchData();
   }, []);
 
-  
   if (loading || !data.length) return null;
 
   return (
-    <div className="p-4 sm:p-6 bg-gray-50">
+    <div className="p-4 sm:p-6 bg-gray-50 select-none">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-800">
         <span className="text-blue-500">Explore By</span> Category
       </h1>
 
-      {error && (
-        <div className="text-red-500 mb-4">
-          {error}
-        </div>
-      )}
+      {error && <div className="text-red-500 mb-4">{error}</div>}
 
       <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
         {data.map((category, index) => (

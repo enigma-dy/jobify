@@ -70,7 +70,8 @@ function LoginForm({ toggleSignup }) {
           </div>
           <button
             type="submit"
-            className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
             Log In
           </button>
         </form>
@@ -78,7 +79,8 @@ function LoginForm({ toggleSignup }) {
           Don't have an account?
           <button
             onClick={() => navigate("/signup")}
-            className="text-blue-500 hover:underline focus:outline-none">
+            className="text-blue-500 hover:underline focus:outline-none"
+          >
             Sign up
           </button>
         </div>

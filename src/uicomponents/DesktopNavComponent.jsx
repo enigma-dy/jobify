@@ -23,7 +23,11 @@ function DesktopNavComponent() {
       <nav className="my-3">
         <ul className="flex space-x-8">
           {navMenu.map((nav) => (
-            <Link to={nav.path} key={nav.name} className="relative group">
+            <Link
+              to={nav.path}
+              key={nav.name}
+              className="relative group text-blue-600"
+            >
               <span className="relative inline-block text-lg transition duration-300 ease-in-out transform hover:scale-110 hover:text-blue-500">
                 {capitalizeWords(nav.name)}
                 <span className="absolute bottom-0 left-0 right-0 h-1 bg-orange-500 transition-all duration-300 ease-in-out transform scale-x-0 group-hover:scale-x-100 origin-left" />
@@ -39,7 +43,8 @@ function DesktopNavComponent() {
               className="text-black font-semibold cursor-pointer"
               onClick={() => navigate("/profile")}
               role="button"
-              aria-label="Go to Profile">
+              aria-label="Go to Profile"
+            >
               {user.name}
             </span>
             <img
@@ -52,12 +57,14 @@ function DesktopNavComponent() {
           <>
             <button
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full  transition duration-300 ease-in-out transform hover:scale-105"
-              onClick={toggleModal}>
+              onClick={toggleModal}
+            >
               Log in
             </button>
             <button
               onClick={() => navigate("/signup")}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full  transition duration-300 ease-in-out transform hover:scale-105">
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full  transition duration-300 ease-in-out transform hover:scale-105"
+            >
               Sign Up
             </button>
           </>

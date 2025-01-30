@@ -4,8 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        agdasima: ["Agdasima", "sans-serif"],
-        roboto: ['"Roboto Slab"', 'serif']
+        sans: ["Faculty Glyphic", "sans-serif"],
       },
     },
   },

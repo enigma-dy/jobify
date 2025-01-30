@@ -71,19 +71,21 @@ const LoginFormComponent = ({ setUser, onClose }) => {
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="p-2 text-gray-400 hover:text-gray-200">
+              className="p-2 text-gray-400 hover:text-gray-200"
+            >
               {showPassword ? <BsEye /> : <BsEyeSlash />}
             </button>
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-3 text-lg font-bold tracking-wide text-gray-200 uppercase bg-pink-600 rounded hover:bg-pink-700">
+            className="w-full px-4 py-3 text-lg font-bold tracking-wide text-gray-200 uppercase bg-blue-600 rounded hover:bg-pink-700"
+          >
             Sign In
           </button>
         </form>
         <p className="mt-6 text-center text-gray-300">
           Not a member?{" "}
-          <a href="#" className="text-pink-600 hover:underline">
+          <a href="#" className="text-blue-600 hover:underline">
             Sign up now
           </a>
           <MdArrowRightAlt />

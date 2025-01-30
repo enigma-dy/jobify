@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import JobCategory from "./JobCategory";
 
 export default function FeaturedJob() {
   const [data, setData] = useState([]);
@@ -14,7 +14,6 @@ export default function FeaturedJob() {
       );
       setData(response.data.featured);
       setLoading(false);
-      console.log(data);
     } catch (error) {
       setError(error);
       setLoading(false);
@@ -42,13 +41,16 @@ export default function FeaturedJob() {
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {data.length > 0 ? (
           data.slice(0, 8).map((featured) => (
-            <li
-              key={featured._id}
-              className="h-64 p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300 flex flex-col space-y-3 justify-center items-center text-center">
-              <p className="text-lg font-semibold">{featured.title}</p>
-              <p className="text-sm text-gray-500">{featured.location}</p>
-              <p className="font-medium">{featured.company.name}</p>
-              <p className="text-sm font-semibold">{featured.salary}</p>
+            <li key={featured._id}>
+              <Link
+                to={`/jobs/${featured._id}`}
+                className="block h-64 p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg hover:bg-blue-600 hover:text-white transition-all duration-300 flex flex-col space-y-3 justify-center items-center text-center select-none"
+              >
+                <p className="text-lg font-semibold">{featured.title}</p>
+                <p className="text-sm text-gray-500">{featured.location}</p>
+                <p className="font-medium">{featured.company.name}</p>
+                <p className="text-sm font-semibold">{featured.salary}</p>
+              </Link>
             </li>
           ))
         ) : (
